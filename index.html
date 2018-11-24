@@ -6,19 +6,44 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0">
   <title>我的画板</title>
   <link rel="stylesheet" href="./style.css">
+  <style type="text/css">
+    .icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+    }
+</style>
 </head>
 <body>
 <canvas id="canvas" class="canvas" height=300px width=300px>
 </canvas>
+
 <div id="tool" class="tool">
-    <button id="eraser" class="eraser">
-    橡皮擦
-    </button>
-    <button id="brush" class="brush">
-     画笔
-    </button>
+    <svg id="eraser" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-eraser"></use>
+    </svg>
+    <svg id="brush" class="icon active" aria-hidden="true">
+      <use xlink:href="#icon-pen"></use>
+    </svg>
+    <svg id="clear" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-clear"></use>
+    </svg>
+    <svg id="download" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-Download"></use>
+    </svg>
 </div>
-<script src="./main.js">
-</script>
+<ol id="colors" class="colors">
+  <li id="red" class="red active"></li>
+  <li id="green" class="green"></li>
+  <li id="blue" class="blue"></li>
+</ol>
+<ol id="sizes" class="sizes">
+  <li id="thin" class="thin active"></li>
+  <li id="thick" class="thick"></li>
+</ol>
+<!--引入icon的js代码-->>
+<script src="//at.alicdn.com/t/font_934319_a5zzp9afmj8.js"></script>
+<script src="./main.js"></script>
 </body>
 </html>

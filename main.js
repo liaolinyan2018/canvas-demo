@@ -4,31 +4,95 @@ var context = canvas.getContext('2d');//canvas的2d上下文
 var using = false; //全局变量
 var lastDot = {"x":undefined, "y":undefined}//全局hash表
 var usingEraser = false;
+var lineWidth = 5 ;
 /****全局变量可以传进任何一个函数内部,且可以在任何地方对它赋值****/
 /****设置在函数内部的变量只能在函数内使用***/
 
 /***主要代码-默认使用画笔*****/
 autoSetCanvasSize();
 
-eraser.onclick = function(){
-  usingEraser = true;
-  tool.className = 'tool active';
-}
+/**初始化背景白色，不然下载都是透明色*/
+context.fillStyle = 'white';
+context.fillRect(0,0,canvas.width,canvas.height);
+
 brush.onclick = function(){
   usingEraser = false;
-  tool.className = 'tool';
+  brush.classList.add('active');
+  eraser.classList.remove('active');
+  clear.classList.remove('active');
+  download.classList.remove('active');
+}
+eraser.onclick = function(){
+  usingEraser = true;
+  eraser.classList.add('active');
+  brush.classList.remove('active');
+  clear.classList.remove('active');
+  download.classList.remove('active');
+}
+clear.onclick = function(){
+  usingEraser = false;
+  clear.classList.add('active');
+  brush.classList.remove('active');
+  eraser.classList.remove('active');
+  download.classList.remove('active');
+  context.clearRect(0,0,canvas.width,canvas.height);
+}
+download.onclick = function(){
+  usingEraser = false;
+  download.classList.add('active');
+  brush.classList.remove('active');
+  eraser.classList.remove('active');
+  clear.classList.remove('active');
+  var url = canvas.toDataURL("image/png");
+  var a = document.createElement('a');
+  document.body.appendChild(a);
+  a.href = url;
+  a.download = '我的画';
+  a.targrt = '_blank'; 
+  a.click();
+
+}
+
+/**** ******/
+red.onclick = function(){
+  context.strokeStyle = 'red';
+  red.classList.add('active');
+  green.classList.remove('active');
+  blue.classList.remove('active');
+}
+green.onclick = function(){
+  context.strokeStyle = 'greenyellow';
+  red.classList.remove('active');
+  green.classList.add('active');
+  blue.classList.remove('active');
+}
+blue.onclick = function(){
+  context.strokeStyle = '#11ffff';
+  red.classList.remove('active');
+  green.classList.remove('active');
+  blue.classList.add('active');
+}
+
+/**** ******/
+thin.onclick = function(){
+  lineWidth = 5 ;
+  thin.classList.add('active');
+  thick.classList.remove('active');
+}
+thick.onclick = function(){
+  lineWidth = 10 ;
+  thin.classList.remove('active');
+  thick.classList.add('active');
 }
 
 listenToUser();
-
 
 /*************自定义函数工具************/
 
 /*画line*/
 function drawLine(x1,y1,x2,y2){
   context.beginPath();
-  context.strokeStyle = 'red';
-  context.lineWidth = 4 ;
+  context.lineWidth = lineWidth;
   context.moveTo(x1,y2); //起点
   context.lineTo(x2,y2); //终点
   context.stroke();

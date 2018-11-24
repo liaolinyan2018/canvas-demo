@@ -1,30 +1,84 @@
 *{margin:0px;padding:0px;}
-body,canvas{
-  position:fixed;
-  left:0;
-  top:0;
+ul,ol{
+  list-style: none;
 }
 .canvas{
-background:yellow;
+background:yellowgreen;
 display:block;
-
+position:fixed;
+left:0;
+top:0;
 }
 
 /*绝对定位后橡皮擦不会出现滚条*/
 .tool{
   position:fixed;
-  left:4px;
-  top:4px;
+  left:8px;
+  top:5px;
 }
-.tool .eraser{
-  margin-right:5px;
+.tool svg{
+  margin-right:6px;
+  width:32px;
+  height:32px;
 }
-.tool .brush{
-  display:none;
+
+/*svg被点击后激活*/
+.tool svg.active{
+  transform: scale(1.4);
+  transition: all 0.3s;
+  fill: red;  /*这里有问题-好像是有些icon不能变颜色*/
 }
-.tool.active .brush{
-  display:inline-block;
+
+.colors{
+  position: fixed;
+  top : 46px;
+  left:8px;
 }
-.tool.active .eraser{
-  display:none;
+.colors >li{
+  width:22px;
+  height:22px;
+  border-radius:60%;
+  border:0.1px solid transparent;
+  box-shadow: 0 0 5px rgba(0,0,0, 0.25);
+  margin:16px 0;
+}
+.colors >li.red{
+  background:red;
+ 
+}
+.colors >li.green{
+  background:greenyellow;
+  
+}
+.colors >li.blue{
+  background:#11ffff;
+  
+}
+/*颜色盘点击后被激活*/
+.colors >li.active{
+  transform: scale(1.3);
+  transition: all 0.3s;
+  box-shadow: 0 0 10px 2px rgba(0,0, 0, 0.6);
+}
+.sizes{
+  position: fixed;
+  right : 7px;
+  top:0px;
+}
+.sizes >li{
+  width:20px;
+  height:0px;
+/*  border:1px solid red;*/
+  padding:3px 0;
+  margin:20px 0;
+}
+.sizes >li.thin{
+  border-bottom:5px solid black;
+}
+.sizes >li.thick{
+  border-bottom:10px solid black;
+}
+.sizes >li.active{
+  transform: scale(1.5);
+  transition: all 0.3s;
 }
