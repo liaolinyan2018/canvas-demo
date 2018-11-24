@@ -1,7 +1,13 @@
 *{margin:0px;padding:0px;}
+body,canvas{
+  position:fixed;
+  left:0;
+  top:0;
+}
 .canvas{
- background:yellow;
-  display:block;
+background:yellow;
+display:block;
+
 }
 
 /*绝对定位后橡皮擦不会出现滚条*/
