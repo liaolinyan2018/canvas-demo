@@ -1,0 +1,24 @@
+*{margin:0px;padding:0px;}
+.canvas{
+ background:yellow;
+  display:block;
+}
+
+/*绝对定位后橡皮擦不会出现滚条*/
+.tool{
+  position:fixed;
+  left:4px;
+  top:4px;
+}
+.tool .eraser{
+  margin-right:5px;
+}
+.tool .brush{
+  display:none;
+}
+.tool.active .brush{
+  display:inline-block;
+}
+.tool.active .eraser{
+  display:none;
+}
