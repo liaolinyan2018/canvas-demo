@@ -3,9 +3,7 @@ ul,ol{
   list-style: none;
 }
 body{
-  position:fixed;
-  left:0;
-  top:0;
+  overflow: hidden;
 }
 .canvas{
 background:yellowgreen;
