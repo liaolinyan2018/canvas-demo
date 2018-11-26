@@ -1,87 +1,25 @@
 *{margin:0px;padding:0px;}
-ul,ol{
-  list-style: none;
-}
-body{
-  overflow: hidden;
-}
-.canvas{
-background:yellowgreen;
-display:block;
-position:fixed;
-left:0;
-top:0;
-}
-
+ul,ol{list-style: none;}
+.clearfix::after{content:'';display:block;clear:both;}
+body{overflow: hidden;position: fixed;left:0px;top:0px;}
+.canvas{background:white;display:block;position: fixed;left:0px;top:0px;}
 /*绝对定位后橡皮擦不会出现滚条*/
-.tool{
-  position:fixed;
-  left:8px;
-  top:5px;
-}
-.tool svg{
-  margin-right:6px;
-  width:32px;
-  height:32px;
-}
-
+.icon {width: 1em; height: 1em;vertical-align: -0.15em;fill: currentColor;overflow: hidden;}
+.tool{position:fixed;left:0px;bottom:5px;}
+.tool svg{margin-right:6px;width:32px;height:32px;}
 /*svg被点击后激活*/
-.tool svg.active{
-  transform: scale(1.4);
-  transition: all 0.3s;
-  fill: red;  /*这里有问题-好像是有些icon不能变颜色*/
-}
-
-.colors{
-  position: fixed;
-  top : 46px;
-  left:8px;
-}
-.colors >li{
-  width:22px;
-  height:22px;
-  border-radius:60%;
-  border:0.1px solid transparent;
-  box-shadow: 0 0 5px rgba(0,0,0, 0.25);
-  margin:16px 0;
-}
-.colors >li.red{
-  background:red;
- 
-}
-.colors >li.green{
-  background:greenyellow;
-  
-}
-.colors >li.blue{
-  background:#11ffff;
-  
-}
+.tool svg.active{fill: red;transform: scale(1.3);transition: all 0.3s;/*这里有问题-好像是有些icon不能变颜色*/}
+.colors{position: fixed;left: 194px;bottom:5px;}
+.colors >li{float:left;width:22px;height:22px;border-radius:60%;border:0.1px solid transparent;box-shadow: 0 0 5px rgba(0,0,0, 0.25);margin:0px 16px;}
+.colors >li.red{background:red;}
+.colors >li.green{background:greenyellow;}
+.colors >li.blue{background:#11ffff;}
 /*颜色盘点击后被激活*/
-.colors >li.active{
-  transform: scale(1.3);
-  transition: all 0.3s;
-  box-shadow: 0 0 10px 2px rgba(0,0, 0, 0.6);
-}
-.sizes{
-  position: fixed;
-  right : 7px;
-  top:0px;
-}
-.sizes >li{
-  width:20px;
-  height:0px;
-/*  border:1px solid red;*/
-  padding:3px 0;
-  margin:20px 0;
-}
-.sizes >li.thin{
-  border-bottom:5px solid black;
-}
-.sizes >li.thick{
-  border-bottom:10px solid black;
-}
-.sizes >li.active{
-  transform: scale(1.5);
-  transition: all 0.3s;
-}
+.colors >li.active{transform: scale(1.3);transition: all 0.3s;box-shadow: 0 0 10px 2px rgba(0,0, 0, 0.6);}
+
+.sizes{position: fixed;left: 348px;bottom:5px;}
+.sizes >li{float:right;width:0px;height:20px;/*  border:1px solid red;*/padding:3px 0;margin:0 20px;}
+.sizes >li.thin{border-left:2px solid black;}
+.sizes >li.thick{border-left:6px solid black;}
+/*画笔粗细点击后被激活*/
+.sizes >li.active{transform: scale(1.3);transition: all 0.3s;}

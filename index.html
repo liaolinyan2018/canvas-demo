@@ -2,21 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!--禁止缩放内容随设备缩放-->
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0">
   <title>我的画板</title>
   <link rel="stylesheet" href="./style.css">
-  <style type="text/css">
-    .icon {
-       width: 1em; height: 1em;
-       vertical-align: -0.15em;
-       fill: currentColor;
-       overflow: hidden;
-    }
-</style>
 </head>
+
 <body>
-<canvas id="canvas" class="canvas" disable-scroll="true" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" height=300px width=300px>
+<canvas id="canvas" class="canvas" height=300 width=300>
 </canvas>
 
 <div id="tool" class="tool">
@@ -33,12 +27,12 @@
       <use xlink:href="#icon-Download"></use>
     </svg>
 </div>
-<ol id="colors" class="colors">
+<ol id="colors" class="colors clearfix">
   <li id="red" class="red active"></li>
   <li id="green" class="green"></li>
   <li id="blue" class="blue"></li>
 </ol>
-<ol id="sizes" class="sizes">
+<ol id="sizes" class="sizes clearfix">
   <li id="thin" class="thin active"></li>
   <li id="thick" class="thick"></li>
 </ol>
