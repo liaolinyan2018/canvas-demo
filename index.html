@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!--禁止缩放内容随设备缩放-->
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0">
+  <meta name="viewport" content="width=device-width, useinitial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0">-->
   <title>我的画板</title>
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -14,30 +14,31 @@
 </canvas>
 
 <div id="tool" class="tool">
-    <svg id="eraser" class="icon" aria-hidden="true">
-      <use xlink:href="#icon-eraser"></use>
-    </svg>
-    <svg id="brush" class="icon active" aria-hidden="true">
-      <use xlink:href="#icon-pen"></use>
+    <svg id="download" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-download"></use>
     </svg>
     <svg id="clear" class="icon" aria-hidden="true">
       <use xlink:href="#icon-clear"></use>
     </svg>
-    <svg id="download" class="icon" aria-hidden="true">
-      <use xlink:href="#icon-Download"></use>
+    <svg id="eraser" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-eraser"></use>
+    </svg>
+    <svg id="brush" class="icon active" aria-hidden="true">
+      <use xlink:href="#icon-brush"></use>
     </svg>
 </div>
-<ol id="colors" class="colors clearfix">
-  <li id="red" class="red active"></li>
+<ol id="colors" class="colors">
+  <li id="black" class="black active"></li>
+  <li id="red" class="red"></li>
   <li id="green" class="green"></li>
   <li id="blue" class="blue"></li>
 </ol>
-<ol id="sizes" class="sizes clearfix">
+<ol id="sizes" class="sizes">
   <li id="thin" class="thin active"></li>
   <li id="thick" class="thick"></li>
 </ol>
 <!--引入icon的js代码-->>
-<script src="//at.alicdn.com/t/font_934319_a5zzp9afmj8.js"></script>
+<script src="//at.alicdn.com/t/font_934319_urtad68ysh8.js"></script>
 <script src="./main.js"></script>
 </body>
 </html>

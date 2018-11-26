@@ -54,9 +54,18 @@ download.onclick = function(){
 }
 
 /*画笔颜色*/
+black.onclick = function(){
+  context.fillStyle = 'black';
+  context.strokeStyle = 'black';
+  black.classList.add('active');
+  red.classList.remove('active');
+  green.classList.remove('active');
+  blue.classList.remove('active');
+}
 red.onclick = function(){
   context.fillStyle = 'red';
   context.strokeStyle = 'red';
+  black.classList.remove('active');
   red.classList.add('active');
   green.classList.remove('active');
   blue.classList.remove('active');
@@ -64,6 +73,7 @@ red.onclick = function(){
 green.onclick = function(){
   context.fillStyle = 'greenyellow';
   context.strokeStyle = 'greenyellow';
+  black.classList.remove('active');
   red.classList.remove('active');
   green.classList.add('active');
   blue.classList.remove('active');
@@ -71,6 +81,7 @@ green.onclick = function(){
 blue.onclick = function(){
   context.fillStyle = '#11ffff';
   context.strokeStyle = '#11ffff';
+  black.classList.remove('active');
   red.classList.remove('active');
   green.classList.remove('active');
   blue.classList.add('active');
@@ -83,7 +94,7 @@ thin.onclick = function(){
   thick.classList.remove('active');
 }
 thick.onclick = function(){
-  lineWidth = 6 ;
+  lineWidth = 8 ;
   thin.classList.remove('active');
   thick.classList.add('active');
 }
@@ -104,6 +115,7 @@ function drawLine(x1,y1,x2,y2){
   context.moveTo(x1,y2); //起点
   context.lineTo(x2,y2); //终点
   context.stroke();
+  context.closePath();
 }
 /*画圆闲置*/
 function drawCircle(x,y,radius){
@@ -164,7 +176,7 @@ function touchDetect(){
             drawLine(lastDot.x,lastDot.y,newDot.x,newDot.y);
             lastDot = newDot;
         }else{
-            context.clearRect(x-5,y-5,10,10);//橡皮的大小
+            context.clearRect(x-5,y-5,12,12);//橡皮的大小
             }
     }else{
         return
