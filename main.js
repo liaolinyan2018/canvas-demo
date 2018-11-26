@@ -4,7 +4,7 @@ var context = canvas.getContext('2d');//canvas的2d上下文
 var using = false; //全局变量
 var lastDot = {"x":undefined, "y":undefined}//全局hash表
 var usingEraser = false;
-var lineWidth = 5 ;
+var lineWidth = 2 ;
 /****全局变量可以传进任何一个函数内部,且可以在任何地方对它赋值****/
 /****设置在函数内部的变量只能在函数内使用***/
 
@@ -131,6 +131,17 @@ function autoSetCanvasSize(){
 function listenToUser(){
 if(document.body.ontouchstart !== undefined){
   //触屏设备（可点击）
+  touchDetect();
+  mouseDetect();
+}else{
+  //非触屏设备-监听鼠标动作
+  mouseDetect();
+  }
+  
+}
+
+/*支持触屏设备*/
+function touchDetect(){
   //1.0开始摸
   canvas.ontouchstart = function(xxx){
     using = true;
@@ -159,47 +170,45 @@ if(document.body.ontouchstart !== undefined){
         return
     }
   }
-
   //3.0摸完了
   canvas.ontouchend = function(){
     using = false;
   }
+}
 
-}else{
-  //非触屏设备-监听鼠标动作
-
+/*支持鼠标设备*/
+function mouseDetect(){
   //1.0按下鼠标
-  canvas.onmousedown = function(xxx){
-    using = true;
-    var x = xxx.clientX; //(clientX,clientY)是相对于视口的坐标
-    var y = xxx.clientY;
-    if(!usingEraser){
-        lastDot = {"x":x,"y":y} //把鼠标按下的点存到全局变量里了,哪里都能用
-     } else{
-        context.clearRect(x-5,y-5,10,10);//橡皮的大小规模
-       }
-    }
-   //2.0移动鼠标
-   canvas.onmousemove = function(xxx){
-     var x = xxx.clientX;
-     var y = xxx.clientY;
-     if(using){
-         if(!usingEraser){
-             var newDot = {"x" : x ,"y": y }
-             drawLine(lastDot.x,lastDot.y,newDot.x,newDot.y);
-             lastDot = newDot;
-         }else{
-             context.clearRect(x-5,y-5,10,10);//橡皮的大小
-             }
-     }else{
-         return
-     }
- }
-   
- //3.0松开鼠标
-   canvas.onmouseup = function(){
-     using = false;
+canvas.onmousedown = function(xxx){
+using = true;
+var x = xxx.clientX; //(clientX,clientY)是相对于视口的坐标
+var y = xxx.clientY;
+if(!usingEraser){
+    lastDot = {"x":x,"y":y} //把鼠标按下的点存到全局变量里了,哪里都能用
+ } else{
+    context.clearRect(x-5,y-5,10,10);//橡皮的大小规模
    }
 }
-
+//2.0移动鼠标
+canvas.onmousemove = function(xxx){
+ var x = xxx.clientX;
+ var y = xxx.clientY;
+ if(using){
+     if(!usingEraser){
+         var newDot = {"x" : x ,"y": y }
+         drawLine(lastDot.x,lastDot.y,newDot.x,newDot.y);
+         lastDot = newDot;
+     }else{
+         context.clearRect(x-5,y-5,10,10);//橡皮的大小
+         }
+ }else{
+     return
+ }
 }
+
+//3.0松开鼠标
+canvas.onmouseup = function(){
+ using = false;
+}
+}
+
