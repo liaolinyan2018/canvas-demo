@@ -95,6 +95,7 @@ thick.onclick = () => {
 }
 //防止手机上画板上下移动
 function preventBehavior(e) {
+  alert('1')
   e.preventDefault();
 }
 document.addEventListener("touchmove", preventBehavior, false)
