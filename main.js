@@ -94,10 +94,10 @@ thick.onclick = () => {
   thick.classList.add('active');
 }
 //防止手机上画板上下移动
-/*function preventBehavior(e) {
+function preventBehavior(e) {
   e.preventDefault();
 }
-document.addEventListener("touchmove", preventBehavior, false)*/
+document.addEventListener("touchmove", preventBehavior, false)
 
 
 /*************自定义函数工具************/
