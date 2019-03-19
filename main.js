@@ -43,14 +43,13 @@ download.onclick = () => {
   var a = document.createElement('a');
   document.body.appendChild(a);
   a.href = url;
-  a.download = '画的名字';
+  a.download = '刚出炉的画';
   a.targrt = '_blank'; 
   a.click(); 
 }
 
 /*画笔颜色*/
 black.onclick = () => {
-  context.fillStyle = 'black';
   context.strokeStyle = 'black';
   black.classList.add('active');
   red.classList.remove('active');
@@ -58,7 +57,6 @@ black.onclick = () => {
   blue.classList.remove('active');
 }
 red.onclick = () => {
-  context.fillStyle = 'red';
   context.strokeStyle = 'red';
   black.classList.remove('active');
   red.classList.add('active');
@@ -66,7 +64,6 @@ red.onclick = () => {
   blue.classList.remove('active');
 }
 green.onclick = () => {
-  context.fillStyle = 'greenyellow';
   context.strokeStyle = 'greenyellow';
   black.classList.remove('active');
   red.classList.remove('active');
@@ -74,7 +71,6 @@ green.onclick = () => {
   blue.classList.remove('active');
 }
 blue.onclick = () => {
-  context.fillStyle = '#11ffff';
   context.strokeStyle = '#11ffff';
   black.classList.remove('active');
   red.classList.remove('active');
@@ -96,10 +92,9 @@ thick.onclick = () => {
 //防止手机上画板上下移动
 document.addEventListener("touchmove", (e)=>{e.preventDefault()}, false)
 
-
 /*************自定义函数工具************/
 
-/*画line*/
+/*画线*/
 function drawLine(x1,y1,x2,y2){
   context.beginPath();
   context.lineWidth = lineWidth;
